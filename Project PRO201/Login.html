@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<link rel="shortcut icon" href="images/add.png"/>
+<script>
+function admin(){
+	var t=document.getElementById("ad");
+	t.innerHTML="<input type='text' value='Boss' disabled class='defaul' id='username'>";
+}
+function guess(){
+	var t=document.getElementById("ad");
+	t.innerHTML="<input type='text' id='username' placeholder='Input username'>";
+}
+function check(){
+	var username=document.getElementById("username");
+	var password=document.getElementById("password");
+	if((username.value=="Boss"&&password.value=="dob102")||(username.value==localStorage.getItem("username")&&password.value==localStorage.getItem("password"))){
+		localStorage.setItem("name", username.value);
+		localStorage.setItem("tag", 1);
+		alert("Correct!!!");
+		window.open("As2.html");
+	}
+	else {
+		password.value="";		
+		alert("Sorry!!! Login failed.");
+	}
+}
+</script>
+<style>
+.defaul{background-color:#CCC;}
+div{text-align:center; margin-top:200px;}
+button{margin-top:12px; font-size:16px; padding-top:3px; padding-bottom:3px; padding-left:5px; padding-right:5px; cursor:pointer;}
+button:hover{opacity:0.7; font-size:18px;}
+p{color:#FFF; font-size:18px;}
+span{color:#FFF; font-size:13px;}
+p:first-child{font-size:22px;}
+.signup{text-decoration:underline; cursor:pointer; font-size:13px; color:#FFF; opacity:0.8;}
+a.signup:hover{opacity:1;}
+</style>
+</head>
+
+<body bgcolor="#000000">
+<div>
+<form>
+<p><b>Ƹ̴Ӂ̴Ʒ♥•.:.ღஐ๖ۣۜLogin  ♥Ƹ̴Ӂ̴Ʒ</b></p>
+<input type="radio" name="login" onChange="guess()" checked/>
+ <span>Login as guess</span>
+<input type="radio" name="login" onChange="admin()"/>
+ <span>Login as administrator </span>
+ <p><b>๖ۣۜUsername:</b></p>
+<p id="ad"><input type="text" id="username" placeholder="Input username" required></p>
+<p><b>๖ۣۜPassword:</b></p>
+<input type="password" id="password" placeholder="Input password" required><br>
+<p><a class="signup" href="signup.html">Sign up</a></p>
+<button onClick="check()"><b>๖ۣۜLogin</b></button>
+</form>
+</div>
+</body>
+</html>

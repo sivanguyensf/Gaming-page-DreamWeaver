@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sign Up</title>
+<link rel="shortcut icon" href="images/add.png"/>
+<script>
+function test(){
+	var username=document.getElementById("username");
+	var password=document.getElementById("password");
+	var cpassword=document.getElementById("cpassword");
+	var email=document.getElementById("email");
+	var cemail=document.getElementById("cemail");
+	var phone=document.getElementById("phone");
+	
+	var mau_user=/[A-Za-z0-9._]{6,12}/;
+	var mau_pass=/[A-Za-z0-9]{6,12}/;
+	var mau_email=/[A-Za-z0-9._]{6,12}/;
+	var mau_phone=/[0-9]{9,12}/;
+	var loi=false;
+	
+	if(mau_user.test(username.value)==false){
+		username.focus();
+		var t=document.getElementById("en");
+		t.innerHTML="Error username!";
+		loi=true;
+	}
+	if(mau_pass.test(password.value)==false){
+		password.focus();
+		var t=document.getElementById("ep");
+		t.innerHTML="Error password!";
+		loi=true;
+	}
+	if(cpassword.value!=password.value){
+		cpassword.focus();
+		var t=document.getElementById("ecp");
+		t.innerHTML="Not equal with password you have input!";
+		loi=true;
+	}
+	if(mau_email.test(email.value)==false){
+		email.focus();
+		var t=document.getElementById("ee");
+		t.innerHTML="Error email!";
+		loi=true;
+	}
+	if(cemail.value!=email.value){
+		cemail.focus();
+		var t=document.getElementById("ece");
+		t.innerHTML="Not equal with email you have input!";
+		loi=true;
+	}
+	if(mau_phone.test(phone.value)==false){
+		phone.focus();
+		var t=document.getElementById("et");
+		t.innerHTML="Error phone number!";
+		loi=true;
+	}
+	if(loi==false){
+		localStorage.setItem("username", username.value);
+		localStorage.setItem("password", password.value);
+		var t1=document.getElementById("en"); t1.innerHTML="";
+		var t2=document.getElementById("ep"); t2.innerHTML="";
+		var t3=document.getElementById("ecp"); t3.innerHTML="";
+		var t4=document.getElementById("ee"); t4.innerHTML="";
+		var t5=document.getElementById("ece"); t5.innerHTML="";
+		var t6=document.getElementById("et"); t6.innerHTML="";
+		alert("Congratulation!!!");		
+	}
+}
+</script>
+<style>
+div{text-align:center; margin-top:200px;}
+p{color:#FFF; font-size:18px;}
+p:first-child{font-size:22px;}
+button{margin-top:12px; font-size:16px; padding-top:3px; padding-bottom:3px; padding-left:5px; padding-right:5px; cursor:pointer;}
+button:hover{opacity:0.7; font-size:18px;}
+.login{text-decoration:underline; cursor:pointer; font-size:13px; color:#FFF; opacity:0.8;}
+a.login:hover{opacity:1;}
+span{color:#F00;}
+</style>
+</head>
+
+<body bgcolor="#000000">
+<div>
+<form>
+<p><b>Ƹ̴Ӂ̴Ʒ♥•.:.ღஐ๖ۣۜSign ๖ۣۜUp  ♥Ƹ̴Ӂ̴Ʒ</b></p>
+<p>UserName: <input type="text" id="username" placeholder="Input username" required>["0-1", "a-z", "A-Z", ".", "_", 6-12 characters]<b><span id="en"></span></b></p>
+<p>Password: <input type="password" id="password" placeholder="Input password" required>["0-1", "a-z", "A-Z", 6-12 characters]<b><span id="ep"></span></b></p>
+<p>Confirm password: <input type="password" id="cpassword" placeholder="Confirm password" required><b><span id="ecp"></span></b></p>
+<br>
+<p>Email: <input type="text" id="email" placeholder="Input email" required><select><option>@yahoo.com</option><option>@yahoo.com.vn</option><option>@gmail.com</option><option>@fpt.edu.vn</option></select>["0-1", "a-z", "A-Z", ".", "_", 6-12 characters]<b><span id="ee"></span></b></p>
+<p>Confirm email name: <input type="text" id="cemail" placeholder="Confirm email" required><b><span id="ece"></span></b></p>
+<br>
+<p>Phone: <b>(+84) </b> <input type="text" id="phone" placeholder="Input phone number" required>["0-9", 9-12 numbers]<b><span id="et"></span></b></p>
+<p><a class="login" href="Login.html">Log in</a></p>
+<button onClick="test()"><b>๖ۣۜSign ๖ۣۜUp</b></button>
+</form>
+</div>
+</body>
+</html>
